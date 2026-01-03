@@ -1,0 +1,28 @@
+generator client {
+  provider = "prisma-client-js"
+  previewFeatures = ["driverAdapters"]
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Product {
+  id        String   @id @default(cuid())
+  name      String
+  sku       String   @unique
+  priceUSD  Decimal  @db.Decimal(10, 2) // Precio base en Dólares
+  stock     Int      @default(0)
+  category  String
+  status    String   @default("IN_STOCK") // IN_STOCK, LOW_STOCK, OUT_OF_STOCK
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+// Tabla para manejar la tasa del BCV/Monitor
+model ExchangeRate {
+  id        String   @id @default(cuid())
+  currency  String   @unique // Ej: "VES"
+  rate      Decimal  @db.Decimal(10, 2)
+  updatedAt DateTime @updatedAt
+}
