@@ -13,6 +13,8 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { currentUser } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
 
+export const dynamic = "force-dynamic";
+
 export default async function UsersPage() {
     const user = await currentUser();
 

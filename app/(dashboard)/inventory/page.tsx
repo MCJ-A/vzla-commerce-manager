@@ -3,6 +3,8 @@ import { columns } from "./columns";
 import { getInventory } from "@/app/actions/get-inventory";
 import { CreateProductSheet } from "@/components/CreateProductSheet";
 
+export const dynamic = "force-dynamic";
+
 export default async function InventoryPage() {
     const data = await getInventory();
 

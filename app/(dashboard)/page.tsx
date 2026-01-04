@@ -3,6 +3,8 @@ import { Package, DollarSign, Activity } from "lucide-react";
 import { getDashboardStats } from "@/app/actions/get-dashboard-stats";
 import { OverviewChart } from "@/components/OverviewChart";
 
+export const dynamic = "force-dynamic";
+
 export default async function Home() {
   const { totalProducts, totalStock, totalValueUSD, totalValueVES, categoryData } =
     await getDashboardStats();

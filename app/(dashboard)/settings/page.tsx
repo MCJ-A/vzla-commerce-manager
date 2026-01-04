@@ -1,6 +1,8 @@
 import { getExchangeRate } from "@/app/actions/settings";
 import { ExchangeRateCard } from "@/components/settings/ExchangeRateCard";
 
+export const dynamic = "force-dynamic";
+
 export default async function SettingsPage() {
     const exchangeRate = await getExchangeRate();
 
