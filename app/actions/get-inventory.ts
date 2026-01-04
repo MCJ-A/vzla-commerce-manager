@@ -18,7 +18,7 @@ export async function getInventory() {
 
         const tasa = exchangeRate?.rate ? Number(exchangeRate.rate) : 0;
 
-        return products.map((product) => {
+        return products.map((product: any) => {
             return {
                 id: product.id,
                 name: product.name,
