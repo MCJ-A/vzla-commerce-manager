@@ -66,7 +66,7 @@ export async function getDashboardStats() {
         const totalValueVES = totalValueUSD * tasa;
 
         // 4. Formateo para Gráficos
-        const categoryData = categoryGroups.map((group) => ({
+        const categoryData = categoryGroups.map((group: any) => ({
             name: group.category,
             value: group._count.category,
         }));
