@@ -4,16 +4,21 @@ import { prisma } from "@/lib/prisma";
 import { revalidatePath } from "next/cache";
 
 export async function getExchangeRate() {
-    const exchangeRate = await prisma.exchangeRate.findUnique({
-        where: { currency: "VES" },
-    });
+    try {
+        const exchangeRate = await prisma.exchangeRate.findUnique({
+            where: { currency: "VES" },
+        });
 
-    if (!exchangeRate) return null;
+        if (!exchangeRate) return null;
 
-    return {
-        ...exchangeRate,
-        rate: exchangeRate.rate.toNumber(),
-    };
+        return {
+            ...exchangeRate,
+            rate: exchangeRate.rate.toNumber(),
+        };
+    } catch (error) {
+        console.error("Error fetching exchange rate:", error);
+        return null;
+    }
 }
 
 export async function updateExchangeRate(newRate: number) {
